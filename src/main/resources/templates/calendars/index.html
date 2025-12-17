@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
-  <title></title>
 </head>
 
 <body>
-  <div>
     <form th:action="@{/calendars}" th:object="${planForm}" method="post" class="form">
       <label for="date" class="label">日付を選択</label>
       <input type="date" id="date" th:field="*{date}" class="date-select"/>
@@ -18,8 +16,6 @@
       
       <button type="submit">保存</button>
     </form>
-  </div>
-  <div>
     <div class="calendar">
       <div th:each="day : ${weekDays}">
         <div class="item">
@@ -32,6 +28,5 @@
         </div>
       </div>
     </div>
-  </div>
 </body>
 </html>
