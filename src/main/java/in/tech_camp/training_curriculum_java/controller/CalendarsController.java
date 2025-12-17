@@ -1,5 +1,6 @@
 package in.tech_camp.training_curriculum_java.controller;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,6 +59,15 @@ public class CalendarsController {
     for (int x = 0; x < 7; x++) {
       Map<String, Object> day_map = new HashMap<String, Object>();
       LocalDate currentDate = todaysDate.plusDays(x);
+      DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+      int dayNumber;
+
+      if(dayOfWeek.getValue() == 7){
+        dayNumber = 0;
+      }else{
+        dayNumber = dayOfWeek.getValue();
+      }
+      
 
       List<String> todayPlans = new ArrayList<>();
       for (PlanEntity plan : plans) {
@@ -69,6 +79,7 @@ public class CalendarsController {
       day_map.put("month", currentDate.getMonthValue());
       day_map.put("date", currentDate.getDayOfMonth());
       day_map.put("plans", todayPlans);
+      day_map.put("dayOfWeek", wdays[dayNumber]);
 
       weekDays.add(day_map);
     }
